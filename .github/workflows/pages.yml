@@ -5,38 +5,30 @@ on:
     branches: [main, claude/dreamy-dirac-wyt7lp]
   workflow_dispatch:
 
+# Only needs permission to push the built site to the gh-pages branch.
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# Allow one concurrent deployment; don't cancel an in-progress run.
 concurrency:
-  group: pages
+  group: pages-deploy
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          # Auto-enable GitHub Pages (Actions source) so no manual setup is needed.
-          enablement: true
-
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # The site is plain static files at the repo root.
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish site to gh-pages branch
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # .nojekyll keeps GitHub Pages from ignoring files/folders.
+          touch .nojekyll
+          git checkout --orphan gh-pages
+          git reset
+          git add -f index.html styles.css script.js images .nojekyll
+          git commit -m "Deploy site to GitHub Pages"
+          git push -f origin gh-pages
