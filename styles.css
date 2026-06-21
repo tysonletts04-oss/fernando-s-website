@@ -10,7 +10,7 @@
   --red-dark: #8a3024;
   --radius: 5px;
   --maxw: 1080px;
-  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --display: "Oswald", "Inter", system-ui, sans-serif;
   --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
@@ -29,10 +29,11 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: var(--serif);
-  font-weight: 500;
-  line-height: 1.12;
-  letter-spacing: -0.01em;
+  font-family: var(--display);
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.08;
+  letter-spacing: 0.02em;
   margin: 0;
 }
 
@@ -70,8 +71,8 @@ a { color: var(--red-dark); }
   border-bottom: 1px solid var(--line);
 }
 .brand { margin-right: auto; text-decoration: none; color: var(--ink); }
-.brand-name { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; line-height: 1.05; display: flex; flex-direction: column; }
-.brand-name small { font-family: var(--sans); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+.brand-name { font-family: var(--display); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; display: flex; flex-direction: column; }
+.brand-name small { font-family: var(--sans); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
 .nav { display: flex; gap: 1.6rem; }
 .nav a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
 .nav a:hover { color: var(--red); }
@@ -81,11 +82,9 @@ a { color: var(--red-dark); }
 /* ---------- Floating image banner ---------- */
 .marquee {
   overflow: hidden;
-  background: var(--ink);
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
   padding: 10px 0;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
 }
 .marquee-track {
   display: flex;
@@ -93,11 +92,12 @@ a { color: var(--red-dark); }
   animation: marquee 60s linear infinite;
 }
 .marquee-track img {
-  height: 64px;
-  width: 88px;           /* fixed, uniform tiles */
-  margin-right: 6px;
+  /* ~5 tiles across the viewport: 5 x (18.4vw + 1.2vw gap) = 98vw */
+  height: 13vw;
+  width: 18.4vw;
+  margin-right: 1.2vw;
   object-fit: cover;
-  border-radius: 3px;
+  border-radius: 4px;
   display: block;
   flex: 0 0 auto;
 }
@@ -108,9 +108,6 @@ a { color: var(--red-dark); }
 }
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
-}
-@media (max-width: 600px) {
-  .marquee-track img { height: 52px; width: 72px; }
 }
 
 /* ---------- Hero ---------- */
@@ -125,7 +122,7 @@ a { color: var(--red-dark); }
 }
 .hero-inner { max-width: 720px; margin: 0 auto; text-align: center; }
 .eyebrow { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255, 255, 255, 0.82); margin: 0 0 1.1rem; }
-.hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 500; margin-bottom: 1.2rem; }
+.hero h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 600; margin-bottom: 1.2rem; }
 .lede { font-size: 1.12rem; line-height: 1.6; max-width: 580px; margin: 0 auto 2rem; color: rgba(255, 255, 255, 0.9); }
 .hero-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
 .hero .btn-ghost { color: #fff; border-color: rgba(255, 255, 255, 0.6); }
@@ -184,7 +181,7 @@ a { color: var(--red-dark); }
 .about p { font-size: 1.05rem; color: #3a332e; margin: 0 0 1.1rem; }
 .about-photo { margin: 0 auto 1.8rem; width: 116px; height: 116px; border-radius: 50%; overflow: hidden; }
 .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.about blockquote { margin: 2.2rem auto 0; max-width: 520px; font-family: var(--serif); font-size: 1.3rem; font-style: italic; font-weight: 400; line-height: 1.4; color: var(--ink); }
+.about blockquote { margin: 2.2rem auto 0; max-width: 520px; font-family: var(--sans); font-size: 1.2rem; font-style: italic; font-weight: 400; line-height: 1.5; color: var(--ink); }
 .about cite { display: block; margin-top: 0.7rem; font-family: var(--sans); font-size: 0.85rem; font-style: normal; color: var(--muted); }
 
 /* ---------- Order ---------- */
@@ -205,7 +202,7 @@ a { color: var(--red-dark); }
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink); color: rgba(255, 255, 255, 0.82); text-align: center; padding: 3rem 1.5rem; }
 .site-footer p { margin: 0.35rem 0; font-size: 0.92rem; }
-.footer-brand { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: #fff; margin-bottom: 0.6rem; }
+.footer-brand { font-family: var(--display); font-size: 1.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: #fff; margin-bottom: 0.6rem; }
 .site-footer a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.35); padding-bottom: 1px; }
 .footer-social { display: flex; gap: 1.4rem; justify-content: center; margin: 1rem 0; }
 .footer-fine { color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; margin-top: 1.2rem; }
