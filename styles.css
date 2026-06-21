@@ -1,4 +1,4 @@
-/* Fernando's Peruvian Rotisserie — styles */
+/* Fernando's Peruvian Rotisserie - styles */
 
 :root {
   --bg: #f6f3ee;
@@ -77,6 +77,39 @@ a { color: var(--red-dark); }
 .nav a:hover { color: var(--red); }
 .header-cta { display: flex; gap: 0.6rem; }
 .header-cta .btn-ghost { color: var(--ink); }
+
+/* ---------- Floating image banner ---------- */
+.marquee {
+  overflow: hidden;
+  background: var(--ink);
+  border-bottom: 1px solid var(--line);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 55s linear infinite;
+}
+.marquee-track img {
+  height: 132px;
+  width: auto;
+  margin-right: 6px;
+  object-fit: cover;
+  display: block;
+  flex: 0 0 auto;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+@media (max-width: 600px) {
+  .marquee-track img { height: 92px; }
+}
 
 /* ---------- Hero ---------- */
 .hero {

@@ -1,4 +1,4 @@
-// Fernando's Peruvian Rotisserie — small enhancements
+// Fernando's Peruvian Rotisserie - small enhancements
 
 // Current year in footer
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -26,14 +26,14 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
   if (isOpen) {
     el.className = "hero-status is-open";
-    el.innerHTML = '<span class="dot"></span>Open now — come on in';
+    el.innerHTML = '<span class="dot"></span>Open now. Come on in';
   } else {
     el.className = "hero-status is-closed";
-    el.innerHTML = '<span class="dot"></span>Closed right now — see hours below';
+    el.innerHTML = '<span class="dot"></span>Closed right now. See hours below';
   }
 })();
 
-// Gallery — render photos listed in images/manifest.json.
+// Gallery - render photos listed in images/manifest.json.
 // Any image that fails to load (file not added yet) is removed gracefully,
 // so the gallery only ever shows photos that actually exist.
 (async function buildGallery() {
@@ -46,7 +46,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
     const res = await fetch("images/manifest.json", { cache: "no-store" });
     if (res.ok) items = await res.json();
   } catch (e) {
-    /* manifest missing — leave gallery empty */
+    /* manifest missing - leave gallery empty */
   }
 
   let shown = 0;
