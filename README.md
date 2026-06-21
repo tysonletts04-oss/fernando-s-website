@@ -101,6 +101,41 @@ loves his food — and the community treats it as a local favourite.
 
 ---
 
+## The site (this repo)
+
+A fast, mobile-first **static site** is now scaffolded — no build step required:
+
+```
+index.html   — single-page site (hero, menu, gallery, about, order, find-us)
+styles.css   — warm coastal / Peruvian styling, responsive
+script.js    — live "open now" status, footer year, photo gallery loader
+images/      — photos + manifest.json (drop real photos here, see images/README.md)
+```
+
+### Adding photos
+
+The hero, gallery and chef portrait read from the `images/` folder. The gallery
+renders from `images/manifest.json` and **gracefully skips any photo that isn't
+present yet**, so you can add them over time. See `images/README.md` for the
+filename → photo mapping. At minimum, add `hero.jpg` (a wide burger/chicken
+shot) and `chef-fernando.jpg`.
+
+**Run it locally:**
+
+```bash
+# any static server works, e.g.
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
+
+**Deploy:** drop the folder on Netlify, Vercel, or GitHub Pages.
+
+> Placeholder hero image is loaded from Unsplash — swap it for real food
+> photography before launch. Menu prices/hours should be confirmed with the
+> owner (see checklist below).
+
+---
+
 ## Website goals
 
 1. **Show up in local search** — when someone Googles "Peruvian chicken Avalon"
