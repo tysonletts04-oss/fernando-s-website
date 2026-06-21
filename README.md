@@ -106,10 +106,19 @@ loves his food — and the community treats it as a local favourite.
 A fast, mobile-first **static site** is now scaffolded — no build step required:
 
 ```
-index.html   — single-page site (hero, menu, about, order, find-us)
+index.html   — single-page site (hero, menu, gallery, about, order, find-us)
 styles.css   — warm coastal / Peruvian styling, responsive
-script.js    — live "open now" status + footer year
+script.js    — live "open now" status, footer year, photo gallery loader
+images/      — photos + manifest.json (drop real photos here, see images/README.md)
 ```
+
+### Adding photos
+
+The hero, gallery and chef portrait read from the `images/` folder. The gallery
+renders from `images/manifest.json` and **gracefully skips any photo that isn't
+present yet**, so you can add them over time. See `images/README.md` for the
+filename → photo mapping. At minimum, add `hero.jpg` (a wide burger/chicken
+shot) and `chef-fernando.jpg`.
 
 **Run it locally:**
 

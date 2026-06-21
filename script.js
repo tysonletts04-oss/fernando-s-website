@@ -16,8 +16,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
   const day = sydneyNow.getDay(); // 0 = Sun ... 6 = Sat
   const minutes = sydneyNow.getHours() * 60 + sydneyNow.getMinutes();
 
-  const open = 6 * 60;            // 06:00 default
-  let openMin = open;
+  let openMin = 6 * 60;           // 06:00 default
   let closeMin;
   if (day === 0) { openMin = 7 * 60; closeMin = 19 * 60; }        // Sunday
   else if (day === 5 || day === 6) { closeMin = 19 * 60 + 30; }   // Fri/Sat
@@ -32,4 +31,44 @@ document.getElementById("year").textContent = new Date().getFullYear();
     el.className = "hero-status is-closed";
     el.innerHTML = '<span class="dot"></span>Closed right now — see hours below';
   }
+})();
+
+// Gallery — render photos listed in images/manifest.json.
+// Any image that fails to load (file not added yet) is removed gracefully,
+// so the gallery only ever shows photos that actually exist.
+(async function buildGallery() {
+  const grid = document.getElementById("gallery-grid");
+  const empty = document.getElementById("gallery-empty");
+  if (!grid) return;
+
+  let items = [];
+  try {
+    const res = await fetch("images/manifest.json", { cache: "no-store" });
+    if (res.ok) items = await res.json();
+  } catch (e) {
+    /* manifest missing — leave gallery empty */
+  }
+
+  let shown = 0;
+  items.forEach((item) => {
+    const fig = document.createElement("figure");
+    fig.className = "gallery-item";
+
+    const img = document.createElement("img");
+    img.src = "images/" + item.file;
+    img.alt = item.alt || "";
+    img.loading = "lazy";
+    img.onerror = () => fig.remove();      // hide if the file isn't there yet
+    img.onload = () => { shown++; };
+
+    fig.appendChild(img);
+    grid.appendChild(fig);
+  });
+
+  // After a beat, if nothing loaded, show the friendly placeholder note.
+  setTimeout(() => {
+    if (empty && grid.querySelectorAll(".gallery-item").length === 0) {
+      empty.hidden = false;
+    }
+  }, 1500);
 })();
