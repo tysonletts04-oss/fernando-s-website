@@ -101,6 +101,32 @@ loves his food — and the community treats it as a local favourite.
 
 ---
 
+## The site (this repo)
+
+A fast, mobile-first **static site** is now scaffolded — no build step required:
+
+```
+index.html   — single-page site (hero, menu, about, order, find-us)
+styles.css   — warm coastal / Peruvian styling, responsive
+script.js    — live "open now" status + footer year
+```
+
+**Run it locally:**
+
+```bash
+# any static server works, e.g.
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
+
+**Deploy:** drop the folder on Netlify, Vercel, or GitHub Pages.
+
+> Placeholder hero image is loaded from Unsplash — swap it for real food
+> photography before launch. Menu prices/hours should be confirmed with the
+> owner (see checklist below).
+
+---
+
 ## Website goals
 
 1. **Show up in local search** — when someone Googles "Peruvian chicken Avalon"

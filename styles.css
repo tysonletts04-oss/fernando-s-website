@@ -1,0 +1,171 @@
+/* Fernando's Peruvian Rotisserie — styles */
+
+:root {
+  --charcoal: #2a211c;
+  --charcoal-soft: #3a2e26;
+  --cream: #fff7ee;
+  --paper: #fffdf9;
+  --red: #c8341f;       /* Peruvian red */
+  --red-dark: #a32714;
+  --amber: #e8920c;     /* aji amarillo */
+  --green: #4f7d3f;     /* chimichurri */
+  --ink: #2a211c;
+  --muted: #7a6a5e;
+  --line: #ecdfce;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(42, 33, 28, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Nunito Sans", system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.6;
+}
+
+h1, h2, h3, .brand-name, .eyebrow {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+a { color: var(--red-dark); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.3rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: transform 0.12s ease, background 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--red); color: #fff; box-shadow: 0 6px 16px rgba(200, 52, 31, 0.3); }
+.btn-primary:hover { background: var(--red-dark); }
+.btn-ghost { background: transparent; color: var(--cream); border: 2px solid currentColor; }
+.btn-lg { padding: 0.95rem 1.8rem; font-size: 1.05rem; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 1.2rem;
+  background: rgba(42, 33, 28, 0.96);
+  backdrop-filter: blur(6px);
+  color: var(--cream);
+}
+.brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--cream); margin-right: auto; }
+.brand-mark { font-size: 1.6rem; }
+.brand-name { font-size: 1.5rem; line-height: 1; display: flex; flex-direction: column; }
+.brand-name small { font-family: "Nunito Sans", sans-serif; font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase; color: var(--amber); margin-top: 2px; }
+.nav { display: flex; gap: 1.4rem; }
+.nav a { color: var(--cream); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+.nav a:hover { color: var(--amber); }
+.header-cta { display: flex; gap: 0.5rem; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    linear-gradient(rgba(42, 33, 28, 0.72), rgba(42, 33, 28, 0.82)),
+    url("https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1600&q=80") center/cover;
+  color: var(--cream);
+  padding: 5rem 1.5rem 4.5rem;
+}
+.hero-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.eyebrow { color: var(--amber); font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase; margin: 0 0 0.5rem; }
+.hero h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); margin: 0 0 1rem; }
+.lede { font-size: 1.15rem; max-width: 600px; margin: 0 auto 1.8rem; color: #f3e6d6; }
+.hero-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+.hero-status { margin-top: 1.4rem; font-weight: 700; font-size: 0.95rem; }
+.hero-status .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+.is-open { color: #b7f3a0; }
+.is-open .dot { background: #6fd44e; box-shadow: 0 0 0 4px rgba(111, 212, 78, 0.25); }
+.is-closed { color: #ffc1b6; }
+.is-closed .dot { background: var(--red); }
+
+/* ---------- Strip ---------- */
+.strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.strip-item { background: var(--paper); text-align: center; padding: 1.4rem 0.8rem; }
+.strip-item span { font-size: 1.8rem; display: block; }
+.strip-item p { margin: 0.4rem 0 0; font-weight: 700; font-size: 0.9rem; color: var(--charcoal-soft); }
+
+/* ---------- Sections ---------- */
+.section { padding: 4rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+.section-head { text-align: center; margin-bottom: 2.5rem; }
+.section-head h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 0 0 0.4rem; color: var(--charcoal); }
+.section-head p { color: var(--muted); margin: 0; font-size: 1.05rem; }
+
+/* ---------- Menu ---------- */
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; }
+.menu-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; box-shadow: var(--shadow); }
+.menu-card h3 { font-size: 1.7rem; margin: 0; color: var(--red); }
+.menu-sub { color: var(--muted); font-size: 0.9rem; margin: 0.2rem 0 1rem; font-style: italic; }
+.menu-card ul { list-style: none; margin: 0; padding: 0; }
+.menu-card li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.5rem 0; border-bottom: 1px dashed var(--line); }
+.menu-card li:last-child { border-bottom: none; }
+.menu-card li small { display: block; color: var(--muted); font-size: 0.78rem; font-weight: 400; }
+.price { font-weight: 800; color: var(--green); white-space: nowrap; }
+.menu-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 2rem; }
+
+/* ---------- About ---------- */
+.about { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); max-width: none; }
+.about-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.about h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--charcoal); margin-top: 0; }
+.about p { font-size: 1.1rem; }
+.about blockquote { margin: 2rem auto 0; max-width: 540px; font-size: 1.25rem; font-style: italic; color: var(--charcoal-soft); border-left: 4px solid var(--amber); padding-left: 1.2rem; text-align: left; }
+.about cite { display: block; margin-top: 0.6rem; font-size: 0.9rem; font-style: normal; color: var(--muted); }
+
+/* ---------- Order ---------- */
+.order { text-align: center; }
+.order-actions { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
+
+/* ---------- Visit ---------- */
+.visit { max-width: 1100px; }
+.visit-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: stretch; }
+.visit-info h2 { font-size: clamp(2.2rem, 5vw, 3rem); margin-top: 0; color: var(--charcoal); }
+.visit-line { margin: 0 0 1.2rem; }
+.visit-line strong { text-transform: uppercase; letter-spacing: 1px; font-size: 0.78rem; color: var(--red); }
+.hours { width: 100%; border-collapse: collapse; margin-top: 0.4rem; }
+.hours td { padding: 0.35rem 0; border-bottom: 1px dashed var(--line); }
+.hours td:last-child { text-align: right; font-weight: 700; }
+.visit-map { min-height: 340px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.visit-map iframe { display: block; height: 100%; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--charcoal); color: var(--cream); text-align: center; padding: 2.5rem 1.5rem; }
+.site-footer p { margin: 0.3rem 0; }
+.footer-brand { font-family: "Bebas Neue", sans-serif; font-size: 1.6rem; }
+.site-footer a { color: var(--amber); text-decoration: none; }
+.footer-social { display: flex; gap: 1.2rem; justify-content: center; margin: 0.8rem 0; }
+.footer-fine { color: #b6a597; font-size: 0.8rem; margin-top: 1rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .nav { display: none; }
+  .visit-grid { grid-template-columns: 1fr; }
+  .strip { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .brand-name { font-size: 1.25rem; }
+  .header-cta .btn-ghost { display: none; }
+  .hero { padding: 3.5rem 1.2rem; }
+}
